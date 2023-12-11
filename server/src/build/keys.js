@@ -5,7 +5,7 @@ exports.default = {
         host: 'database-1.cdpckufoj9jt.us-east-2.rds.amazonaws.com',
         user: 'admin',
         password: 'noobMaster69',
-        database: 'blink',
-        ssl: true
+        ssl: true,
+        database: 'blink'
     }
 };
