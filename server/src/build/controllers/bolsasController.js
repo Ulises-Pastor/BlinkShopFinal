@@ -55,8 +55,8 @@ class BolsasController {
     }
     eliminar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            const resp = yield database_1.default.query(`DELETE FROM bolsas_de_compra WHERE id = ${id}`);
+            const { id, clave_prenda } = req.params;
+            const resp = yield database_1.default.query(`DELETE FROM bolsas_de_compra WHERE id = ${id} and clave_prenda = ${clave_prenda}`);
             res.json(resp);
         });
     }

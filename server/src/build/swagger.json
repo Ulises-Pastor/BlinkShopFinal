@@ -342,52 +342,11 @@
                 }
             }
         },
-        "/api/bolsas/actualizarPrenda/{clave}": {
-            "put": {
-                "summary": "Modifica la informacion de una prenda",
-                "description": "<p>Servicio que actualiza la información de una prenda existente en la tienda.</p> <p>&nbsp;</p> <p><em><strong>¿Como actualizar la información de una prenda existente en la tienda?</strong></em></p>",
-                "operationId": "update",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "clave",
-                        "in": "path",
-                        "description": "Clave de la prenda a modificar",
-                        "required": true,
-                        "type": "string",
-                        "default": "blu-001"
-                    },
-                    {
-                        "name": "Prenda",
-                        "in": "body",
-                        "description": "Nueva información de la prenda.",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/NuevaPrenda"
-                        }
-                    }
-                ],
-                "tags": ["Bolsas de Compra"],
-                "responses": {
-                    "201": {
-                        "description": "OK"
-                    },
-                    "403": {
-                        "description": "Prohibido"
-                    }
-                }
-            }
-        },
-        "/api/bolsas/eliminarPrenda/{clave}": {
+        "/api/bolsas/eliminarPrenda/{id}/{clave}": {
             "delete": {
                 "tags": ["Bolsas de Compra"],
-                "summary": "Eliminar una prenda de la tienda.",
-                "description": "<p>Servicio que elimina una prenda de la tienda.</p> <p>&nbsp;</p> <p><em><strong>¿Como eliminar una prenda de la tienda?</strong></em></p>",
+                "summary": "Eliminar una prenda de la bolsa de compra.",
+                "description": "<p>Servicio que elimina una prenda de la bolsa de compra del usuario dado.</p> <p>&nbsp;</p> <p><em><strong>¿Como eliminar una prenda de la bolsa de compra?</strong></em></p>",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -397,6 +356,14 @@
                     }
                 },
                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Código del usuario a quien pertenece la bolsa de compra.",
+                        "required": true,
+                        "type": "number",
+                        "default": 1
+                    },
                     {
                         "name": "clave",
                         "in": "path",

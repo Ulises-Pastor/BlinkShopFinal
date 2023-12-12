@@ -17,14 +17,14 @@ const database_1 = __importDefault(require("../database"));
 class PrendasController {
     listar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const respuesta = yield database_1.default.query('SELECT * FROM Prendas');
+            const respuesta = yield database_1.default.query('SELECT * FROM prendas');
             res.json(respuesta);
         });
     }
     listarUno(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { clave } = req.params;
-            const respuesta = yield database_1.default.query('SELECT * FROM Prendas WHERE clave = ?', [clave]);
+            const respuesta = yield database_1.default.query('SELECT * FROM prendas WHERE clave = ?', [clave]);
             if (respuesta.length > 0) {
                 res.json(respuesta[0]);
                 return;
@@ -34,7 +34,7 @@ class PrendasController {
     }
     crear(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const resp = yield database_1.default.query("INSERT INTO Prendas set ?", [req.body]);
+            const resp = yield database_1.default.query("INSERT INTO prendas set ?", [req.body]);
             res.json(resp);
         });
     }
@@ -42,14 +42,14 @@ class PrendasController {
         return __awaiter(this, void 0, void 0, function* () {
             const { clave } = req.params;
             console.log(req.params);
-            const resp = yield database_1.default.query("UPDATE Prendas set ? WHERE clave = ?", [req.body, clave]);
+            const resp = yield database_1.default.query("UPDATE prendas set ? WHERE clave = ?", [req.body, clave]);
             res.json(resp);
         });
     }
     eliminar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { clave } = req.params;
-            const resp = yield database_1.default.query("DELETE FROM Prendas WHERE clave = ?", [clave]);
+            const resp = yield database_1.default.query("DELETE FROM prendas WHERE clave = ?", [clave]);
             res.json(resp);
         });
     }
