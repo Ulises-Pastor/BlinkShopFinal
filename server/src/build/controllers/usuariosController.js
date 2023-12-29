@@ -17,14 +17,14 @@ const database_1 = __importDefault(require("../database"));
 class UsuariosController {
     listar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const respuesta = yield database_1.default.query('SELECT * FROM usuarios');
+            const respuesta = yield database_1.default.query('SELECT * FROM Usuarios');
             res.json(respuesta);
         });
     }
     listarUno(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const respuesta = yield database_1.default.query('SELECT * FROM usuarios WHERE id = ?', [id]);
+            const respuesta = yield database_1.default.query('SELECT * FROM Usuarios WHERE id = ?', [id]);
             if (respuesta.length > 0) {
                 res.json(respuesta[0]);
                 return;
@@ -34,7 +34,7 @@ class UsuariosController {
     }
     crear(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const resp = yield database_1.default.query("INSERT INTO usuarios set ?", [req.body]);
+            const resp = yield database_1.default.query("INSERT INTO Usuarios set ?", [req.body]);
             res.json(resp);
         });
     }
@@ -42,21 +42,21 @@ class UsuariosController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             console.log(req.params);
-            const resp = yield database_1.default.query("UPDATE usuarios set ? WHERE id = ?", [req.body, id]);
+            const resp = yield database_1.default.query("UPDATE Usuarios set ? WHERE id = ?", [req.body, id]);
             res.json(resp);
         });
     }
     eliminar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const resp = yield database_1.default.query(`DELETE FROM usuarios WHERE id = ${id}`);
+            const resp = yield database_1.default.query(`DELETE FROM Usuarios WHERE id = ${id}`);
             res.json(resp);
         });
     }
     iniciarSesion(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const parametros = req.body;
-            var consulta = `SELECT nombre, correo, rol FROM usuarios WHERE correo = '${parametros.correo}' and contrasena = '${parametros.contrasena}'`;
+            var consulta = `SELECT nombre, correo, rol FROM Usuarios WHERE correo = '${parametros.correo}' and contrasena = '${parametros.contrasena}'`;
             const resp = yield database_1.default.query(consulta);
             if (resp.length > 0) {
                 res.json(resp);

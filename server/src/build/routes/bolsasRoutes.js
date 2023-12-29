@@ -10,7 +10,7 @@ class BolsasRoutes {
     config() {
         this.router.get('/verBolsa/:id', bolsasController_1.bolsasController.listarBolsa);
         this.router.post('/agregarPrenda/', bolsasController_1.bolsasController.agregar);
-        this.router.delete('/eliminarPrenda/:id/:clave_prenda', bolsasController_1.bolsasController.eliminar);
+        this.router.delete('/eliminarRol/:id', bolsasController_1.bolsasController.eliminar);
     }
 }
 const bolsasRoutes = new BolsasRoutes();
