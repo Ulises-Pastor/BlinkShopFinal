@@ -5,13 +5,13 @@ class PrendasController
 {
     public async listar(req: Request, res: Response ): Promise<void>
     {
-        const respuesta = await pool.query('SELECT * FROM Prendas');
+        const respuesta = await pool.query('SELECT * FROM prendas');
         res.json( respuesta );
     }
 
     public async listarUno(req: Request, res: Response): Promise <void>{
         const {clave} = req.params;
-        const respuesta = await pool.query('SELECT * FROM Prendas WHERE clave = ?', [clave]);
+        const respuesta = await pool.query('SELECT * FROM prendas WHERE clave = ?', [clave]);
         if(respuesta.length>0){
             res.json(respuesta[0]);
             return ;
@@ -20,20 +20,20 @@ class PrendasController
     }
 
     public async crear(req: Request, res: Response): Promise<void> {
-        const resp = await pool.query("INSERT INTO Prendas set ?", [req.body]);
+        const resp = await pool.query("INSERT INTO prendas set ?", [req.body]);
         res.json(resp);
     }
 
     public async actualizar(req: Request, res: Response): Promise<void> {
         const { clave } = req.params;
         console.log(req.params);
-        const resp = await pool.query("UPDATE Prendas set ? WHERE clave = ?", [req.body, clave]);
+        const resp = await pool.query("UPDATE prendas set ? WHERE clave = ?", [req.body, clave]);
         res.json(resp);
     }
 
     public async eliminar(req: Request, res: Response): Promise<void> {
         const { clave } = req.params;
-        const resp = await pool.query("DELETE FROM Prendas WHERE clave = ?", [clave]);
+        const resp = await pool.query("DELETE FROM prendas WHERE clave = ?", [clave]);
         res.json(resp);
     }
 }

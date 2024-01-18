@@ -17,14 +17,14 @@ const database_1 = __importDefault(require("../database"));
 class RolesController {
     listar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const respuesta = yield database_1.default.query('SELECT * FROM Roles');
+            const respuesta = yield database_1.default.query('SELECT * FROM roles');
             res.json(respuesta);
         });
     }
     listarUno(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const respuesta = yield database_1.default.query('SELECT * FROM Roles WHERE id = ?', [id]);
+            const respuesta = yield database_1.default.query('SELECT * FROM roles WHERE id = ?', [id]);
             if (respuesta.length > 0) {
                 res.json(respuesta[0]);
                 return;
@@ -34,21 +34,21 @@ class RolesController {
     }
     crear(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const resp = yield database_1.default.query("INSERT INTO Roles set ?", [req.body]);
+            const resp = yield database_1.default.query("INSERT INTO roles set ?", [req.body]);
             res.json(resp);
         });
     }
     actualizar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const resp = yield database_1.default.query("UPDATE Roles set ? WHERE id = ?", [req.body, id]);
+            const resp = yield database_1.default.query("UPDATE roles set ? WHERE id = ?", [req.body, id]);
             res.json(resp);
         });
     }
     eliminar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const resp = yield database_1.default.query(`DELETE FROM Roles WHERE id = ${id}`);
+            const resp = yield database_1.default.query(`DELETE FROM roles WHERE id = ${id}`);
             res.json(resp);
         });
     }

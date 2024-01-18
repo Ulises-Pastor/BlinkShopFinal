@@ -17,14 +17,14 @@ const database_1 = __importDefault(require("../database"));
 class TallasController {
     listar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const respuesta = yield database_1.default.query('SELECT * FROM Tallas');
+            const respuesta = yield database_1.default.query('SELECT * FROM tallas');
             res.json(respuesta);
         });
     }
     listarUno(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const respuesta = yield database_1.default.query('SELECT * FROM Tallas WHERE id = ?', [id]);
+            const respuesta = yield database_1.default.query('SELECT * FROM tallas WHERE id = ?', [id]);
             if (respuesta.length > 0) {
                 res.json(respuesta[0]);
                 return;
@@ -34,7 +34,7 @@ class TallasController {
     }
     crear(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const resp = yield database_1.default.query("INSERT INTO Tallas set ?", [req.body]);
+            const resp = yield database_1.default.query("INSERT INTO tallas set ?", [req.body]);
             res.json(resp);
         });
     }
@@ -42,14 +42,14 @@ class TallasController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             console.log(req.params);
-            const resp = yield database_1.default.query("UPDATE Tallas set ? WHERE id = ?", [req.body, id]);
+            const resp = yield database_1.default.query("UPDATE tallas set ? WHERE id = ?", [req.body, id]);
             res.json(resp);
         });
     }
     eliminar(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const resp = yield database_1.default.query("DELETE FROM Tallas WHERE id = ?", [id]);
+            const resp = yield database_1.default.query("DELETE FROM tallas WHERE id = ?", [id]);
             res.json(resp);
         });
     }
